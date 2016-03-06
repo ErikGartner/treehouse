@@ -1,0 +1,56 @@
+<template name="viewer">
+  <div class="row" style="padding-top:3em;">
+    <div class="twelve wide column">
+    <span class="graph-title">{{name}}</span><span class="owner-title">{{author}}</span>
+    </div>
+    <div class="right aligned two wide
+     column">
+      <div style="font-size:2em">
+        {{#if mayEdit}}
+        <a id="toggleEditor" href="#"><i class="edit icon"></i></a>
+        {{/if}}
+        <a href="{{pathFor 'tree.view.fullscreen'}}"><i class="expand icon"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="fourteen wide column">
+      <style id="graph-style">
+      {{{stylesheet}}}
+      </style>
+      <div id="graph"></div>
+    </div>
+  </div>
+  {{#if editing}}
+  <div class="row">
+    <div class="twelve wide column">
+    {{> editor}}
+    </div>
+  </div>
+  {{else}}
+  <div class="row">
+    <div class="fourteen wide column">
+      <div>
+        {{{compiledDescription}}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="seven wide column">
+      <h5>Stylesheet</h5>
+      <pre>{{{hlStyle}}}</pre>
+    </div>
+    <div class="seven wide column">
+      <h5>Data</h5>
+      <pre>{{{hlData}}}</pre>
+    </div>
+  </div>
+  {{/if}}
+</template>
+
+<template name="fullscreenViewer">
+  <style id="graph-style">
+  {{{stylesheet}}}
+  </style>
+  <div id="fullscreen-graph"></div>
+</template>
