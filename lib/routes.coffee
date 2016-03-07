@@ -39,3 +39,14 @@ Router.route '/f/:slug',
 
   action: ->
     @render 'fullscreenViewer'
+
+Router.route '/t/:slug/:key/edit',
+  name: 'tree.editor',
+  waitOn: ->
+    return Meteor.subscribe 'trees'
+
+  data: ->
+    return Trees.findOne slug: @params.slug
+
+  action: ->
+    @render 'editor'

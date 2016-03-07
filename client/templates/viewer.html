@@ -1,13 +1,14 @@
 <template name="viewer">
   <div class="row" style="padding-top:3em;">
-    <div class="twelve wide column">
+    <div class="eleven wide column">
     <span class="graph-title">{{name}}</span><span class="owner-title">{{author}}</span>
     </div>
-    <div class="right aligned two wide
+    <div class="right aligned three wide
      column">
-      <div style="font-size:2em">
-        {{#if mayEdit}}
-        <a id="toggleEditor" href="#"><i class="edit icon"></i></a>
+      <div style="font-size:1.5em">
+        <a href="#" id="shareButton"><i class="share icon"></i></a>
+        {{#if editKey}}
+        <a href="{{pathFor 'tree.editor' key=editKey}}"><i class="edit icon"></i></a>
         {{/if}}
         <a href="{{pathFor 'tree.view.fullscreen'}}"><i class="expand icon"></i></a>
       </div>
@@ -21,13 +22,6 @@
       <div id="graph"></div>
     </div>
   </div>
-  {{#if editing}}
-  <div class="row">
-    <div class="twelve wide column">
-    {{> editor}}
-    </div>
-  </div>
-  {{else}}
   <div class="row">
     <div class="fourteen wide column">
       <div>
@@ -45,7 +39,24 @@
       <pre>{{{hlData}}}</pre>
     </div>
   </div>
-  {{/if}}
+
+  <div id="sharemodal" class="ui small modal">
+    <div class="header">Share {{name}}</div>
+    <div class="content">
+      <div class="ui form">
+        <div class="field">
+          <label>Read-only link</label>
+          <input type="text" value="{{urlFor 'tree.view.guest'}}">
+        </div>
+        {{#if editKey}}
+        <div class="field">
+          <label>Editing link</label>
+          <input type="text" value="{{urlFor 'tree.view.owner' key=editKey}}">
+        </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
 </template>
 
 <template name="fullscreenViewer">

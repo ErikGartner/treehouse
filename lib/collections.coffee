@@ -43,8 +43,12 @@ Trees.allow(
   insert: (userId, doc) ->
     return userId
 
-  update: (userId, doc) ->
+  update: (userId, doc, fields, modifier) ->
+    console.log doc.writekey, '==', modifier.$set.writekey
     if userId == doc.owner
+      return true
+
+    if doc.writekey == modifier.$set.writekey
       return true
 
     return false

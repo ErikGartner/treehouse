@@ -48,13 +48,12 @@ Template.viewer.helpers
   hlData: ->
     return hljs.highlight('json', @data).value
 
-  mayEdit: ->
-    return Router.current().params.key? or @owner == Meteor.userId()
-
-  editing: ->
-    return Session.get 'editing'
+  editKey: ->
+    if @writekey?
+      return @writekey
+    else
+      return Router.current().params.key
 
 Template.viewer.events
-  'click #toggleEditor': (event) ->
-    editing = not Session.get('editing')
-    Session.set('editing', editing)
+  'click #shareButton': ->
+    $('#sharemodal').modal('show')
