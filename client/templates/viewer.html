@@ -46,12 +46,12 @@
       <div class="ui form">
         <div class="field">
           <label>Read-only link</label>
-          <input type="text" value="{{urlFor 'tree.view.guest'}}">
+          <input type="text" readonly value="{{urlFor 'tree.view.guest'}}">
         </div>
         {{#if editKey}}
         <div class="field">
           <label>Editing link</label>
-          <input type="text" value="{{urlFor 'tree.view.owner' key=editKey}}">
+          <input type="text" readonly value="{{urlFor 'tree.view.owner' key=editKey}}">
         </div>
         {{/if}}
       </div>
