@@ -2,6 +2,9 @@
   "public": {
     "treehouse": {
       "version": "0.1.0"
+    },
+    "analyticsSettings": {
+     "Google Analytics" : {"trackingId": "UA-74838430-1"}
     }
   }
 }
