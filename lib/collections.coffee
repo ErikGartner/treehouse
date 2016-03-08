@@ -43,6 +43,12 @@ Schemas.tree = new SimpleSchema
     type: String
     max: 10000
 
+  dTreeVersion:
+    type: String
+    autoValue: ->
+      if @isInsert
+        return dTree.VERSION
+
 Trees.attachSchema Schemas.tree
 
 Trees.allow(
