@@ -31,6 +31,10 @@
   </div>
   <div class="row">
     <div class="five wide column">
+      {{#if textTemplate}}
+      <h5>Custom Template</h5>
+      <pre>{{{hlTemplate}}}</pre>
+      {{/if}}
       <h5>Stylesheet</h5>
       <pre>{{{hlStyle}}}</pre>
     </div>

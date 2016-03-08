@@ -13,6 +13,7 @@ jquery                  # Helpful client-side library
 tracker                 # Meteor's client-side reactive programming library
 random
 ejson
+spacebars-compiler
 
 check
 audit-argument-checks
@@ -49,3 +50,4 @@ fabienb4:autoform-semantic-ui
 smoiz:dtree
 todda00:friendly-slugs
 simple:highlight.js
+djedi:sanitize-html-client

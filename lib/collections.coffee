@@ -27,6 +27,12 @@ Schemas.tree = new SimpleSchema
     label: 'Json data'
     max: 50000
 
+  textTemplate:
+    type: String
+    optional: true
+    label: 'Custom text template (handlerbars)'
+    max: 5000
+
   stylesheet:
     type: String
     label: 'CSS stylesheet'
@@ -44,7 +50,6 @@ Trees.allow(
     return userId
 
   update: (userId, doc, fields, modifier) ->
-    console.log doc.writekey, '==', modifier.$set.writekey
     if userId == doc.owner
       return true
 
