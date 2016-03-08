@@ -62,5 +62,5 @@ Template.viewer.helpers
       return Router.current().params.key
 
 Template.viewer.events
-  'click #shareButton':
+  'click #shareButton': (event) ->
     $('#sharemodal').modal('show')
