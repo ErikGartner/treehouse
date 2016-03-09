@@ -54,7 +54,8 @@ Template.gistViewer.onRendered ->
     @data.description = gist.files['readme.md']?.content
     @data.stylesheet = gist.files['stylesheet.css']?.content
     @data.textRenderer = gist.files['renderer.handlebars']?.content
-    @data.name = gist.id
+    @data.name = gist.description
+    @data.gist = gist
 
     Blaze.renderWithData(Template.viewer, @data, $('#mainGrid')[0])
 
@@ -69,7 +70,7 @@ Template.gistViewer.onRendered ->
 
 Template.viewer.helpers
   compiledDescription: ->
-    return marked(@description)
+    return marked @description
 
   hlStyle: ->
     return hljs.highlight('css', @stylesheet).value
@@ -88,4 +89,4 @@ Template.viewer.helpers
 
 Template.viewer.events
   'click #shareButton': (event) ->
-    $('#sharemodal').modal('show')
+    $('#sharemodal').modal 'show'
