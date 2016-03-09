@@ -16,7 +16,7 @@ Router.route '/t/:slug',
     return Trees.findOne slug: @params.slug
 
   action: ->
-    @render 'viewer'
+    @render 'localViewer'
 
 Router.route '/t/:slug/:key',
   name: 'tree.view.owner',
@@ -27,7 +27,7 @@ Router.route '/t/:slug/:key',
     return Trees.findOne slug: @params.slug
 
   action: ->
-    @render 'viewer'
+    @render 'localViewer'
 
 Router.route '/f/:slug',
   name: 'tree.view.fullscreen',
@@ -50,3 +50,12 @@ Router.route '/t/:slug/:key/edit',
 
   action: ->
     @render 'editor'
+
+Router.route '/g/:gist',
+  name: 'tree.view.gist',
+
+  data: ->
+    return {gist: @params.gist}
+
+  action: ->
+    @render 'gistViewer'
