@@ -30,7 +30,7 @@ Router.route '/t/:slug/:key',
     @render 'localViewer'
 
 Router.route '/f/:slug',
-  name: 'tree.view.fullscreen',
+  name: 'tree.view.fullscreenViewer',
   waitOn: ->
     return Meteor.subscribe 'trees'
 
@@ -38,7 +38,7 @@ Router.route '/f/:slug',
     return Trees.findOne slug: @params.slug
 
   action: ->
-    @render 'fullscreenViewer'
+    @render 'localFullscreenViewer'
 
 Router.route '/t/:slug/:key/edit',
   name: 'tree.editor',
@@ -59,3 +59,12 @@ Router.route '/g/:gist',
 
   action: ->
     @render 'gistViewer'
+
+Router.route '/g/f/:gist',
+  name: 'tree.view.fullscreenGist'
+
+  data: ->
+    return {gist: @params.gist}
+
+  action: ->
+    @render 'gistFullscreenViewer'

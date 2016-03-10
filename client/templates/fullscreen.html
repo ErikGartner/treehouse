@@ -1,0 +1,18 @@
+<template name="fullscreenViewer">
+  <style id="graph-style">
+  {{{stylesheet}}}
+  </style>
+  <div id="fullscreen-graph"></div>
+</template>
+
+<template name="gistFullscreenViewer">
+  {{#if gistData}}
+    {{#with gistData}}
+      {{> fullscreenViewer}}
+    {{/with}}
+  {{/if}}
+</template>
+
+<template name="localFullscreenViewer">
+  {{> fullscreenViewer}}
+</template>

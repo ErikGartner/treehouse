@@ -9,7 +9,6 @@ handlebarsRenderer = (name, extra, textClass) ->
   return html
 
 dTreeOptions =
-  target: '#graph'
   debug: false
   margin:
     top: 0
@@ -23,41 +22,45 @@ dTreeOptions =
     marriage: 'marriage',
     text: 'nodeText'
 
-Template.localViewer.onRendered ->
-  json = JSON.parse @data.data
-  dTreeOptions.width = $('#graph').width()
-  dTreeOptions.height = $(window).height() * 0.80
-  if @data.textTemplate? and @data.textTemplate != ''
-    dTreeOptions.callbacks = {textRenderer: _.bind(handlebarsRenderer, @)}
+Template.viewer.onRendered ->
+  @autorun (comp) =>
+    data = Template.currentData()
+    json = JSON.parse data.data
+    dTreeOptions.width = $('#graph').width()
+    dTreeOptions.height = $(window).height() * 0.80
+    dTreeOptions.target = '#graph'
+    if data.textTemplate? and data.textTemplate != ''
+      dTreeOptions.callbacks = {textRenderer: _.bind(handlebarsRenderer, @)}
 
-  dTree.init json, dTreeOptions
+    dTree.init json, dTreeOptions
 
 Template.fullscreenViewer.onRendered ->
-  json = JSON.parse @data.data
-  dTreeOptions.width = window.innerWidth
-  dTreeOptions.height = window.outerHeight
-  dTreeOptions.target = '#fullscreen-graph'
-  if @data.textTemplate? and @data.textTemplate != ''
-    dTreeOptions.callbacks = {textRenderer: _.bind(handlebarsRenderer, @)}
+  @autorun (comp) =>
+    data = Template.currentData()
+    json = JSON.parse data.data
+    dTreeOptions.width = window.innerWidth
+    dTreeOptions.height = window.outerHeight
+    dTreeOptions.target = '#fullscreen-graph'
+    if data.textTemplate? and data.textTemplate != ''
+      dTreeOptions.callbacks = {textRenderer: _.bind(handlebarsRenderer, @)}
 
-  dTree.init json, dTreeOptions
+    dTree.init json, dTreeOptions
 
 Template.gistViewer.onRendered ->
+  Session.set 'gistData', undefined
   getGist @data.gist, (err, res) ->
     if err?
       console.log err
       return
+    Session.set 'gistData', res
 
-    Blaze.renderWithData(Template.viewer, res, $('#mainGrid')[0])
-
-    json = JSON.parse res.data
-    dTreeOptions.width = $('#graph').width()
-    dTreeOptions.height = $(window).height() * 0.80
-    if res.textTemplate? and res.textTemplate != ''
-      dTreeOptions.callbacks = {textRenderer: _.bind(handlebarsRenderer, res)}
-
-    dTree.init json, dTreeOptions
-
+Template.gistFullscreenViewer.onRendered ->
+  Session.set 'gistData', undefined
+  getGist @data.gist, (err, res) ->
+    if err?
+      console.log err
+      return
+    Session.set 'gistData', res
 
 Template.viewer.helpers
   compiledDescription: ->
@@ -83,6 +86,20 @@ Template.viewer.helpers
       return Router.routes['tree.view.gist'].url({gist: @gist.id})
     else
       return Router.routes['tree.view.guest'].url({slug: @slug})
+
+  fullscreenLink: ->
+    if @gist?
+      return Router.routes['tree.view.fullscreenGist'].url({gist: @gist.id})
+    else
+      return Router.routes['tree.view.fullscreenViewer'].url({slug: @slug})
+
+Template.gistViewer.helpers
+  gistData: ->
+    Session.get 'gistData'
+
+Template.gistFullscreenViewer.helpers
+  gistData: ->
+    Session.get 'gistData'
 
 Template.viewer.events
   'click #shareButton': (event) ->
