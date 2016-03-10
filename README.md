@@ -1,10 +1,21 @@
 # Treehouse
-Treehouse is a playground / an open registry  for demoing and hosting of dTree graphs. Rather than having to build an entire app/site to try out a dTree graph feel free to use this site.
+Treehouse is a playground / an open registry for demoing, viewing and hosting of dTree graphs. Rather than having to build an entire app/site to try out a dTree graph feel free to use this site.
 
 ## Privacy and data safety
 This site is free and open for everybody. No graph is private though only through ownership or an edit-link can an existing graph be edited.
 
 Data is backuped daily though this site is _not_ intended for heavy production use. If your data is very sensitive host it yourself.
+
+### Gist-hosted data
+A third option is to host your data on a public [gist](https://gist.github.com). It has the benefit of _reliable data storage_ that is _version controlled_. Your graph is then accessible from ```https://treehouse.gartner.io/g/<GIST_ID>```.
+
+The gist should have the following files:
+- data.json *Required*
+- stylesheet.css *Required*
+- readme.md
+- renderer.handlebars
+
+See [this](https://treehouse.gartner.io/g/58e58be650453b6d49d7) example for more.
 
 ## dTree
 [dTree](https://github.com/ErikGartner/dTree) is the open source graph library that powers this site. It is written by the Swedish computer engineering student [Erik Gärtner](https://gartner.io). It builds on top of D3 and works aims at being a simple yet extensive library for building family trees.
@@ -36,4 +47,4 @@ The library uses a simple JSON data format to represent the data. Checkout [this
 The stylesheet belong is simple and only intended to show an easy example of how what is possible.
 
 ### Custom renderer
-When using dTree on your own site you have the possibility to to fully customize how the library renders the text and the node. For security purposes Treehouse allows for custom html templates using a handlebar template.
+When using dTree on your own site you have the possibility to to fully customize how the library renders the text and the node. For security purposes Treehouse uses a custom text renderer that allows for handlebars template to format the node text.

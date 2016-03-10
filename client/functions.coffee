@@ -13,7 +13,7 @@
       data: gist.files['data.json']?.content
       description: gist.files['readme.md']?.content
       stylesheet: gist.files['stylesheet.css']?.content
-      textRenderer: gist.files['renderer.handlebars']?.content
+      textTemplate: gist.files['renderer.handlebars']?.content
 
     callback(err, data)
 
