@@ -43,27 +43,18 @@ Template.fullscreenViewer.onRendered ->
   dTree.init json, dTreeOptions
 
 Template.gistViewer.onRendered ->
-  url = 'https://api.github.com/gists/' + @data.gist
-  HTTP.get url, (err, res) =>
+  getGist @data.gist, (err, res) ->
     if err?
-      console.log 'Error while fetching gist:', url, err
+      console.log err
       return
 
-    gist = JSON.parse res.content
-    @data.data = gist.files['data.json']?.content
-    @data.description = gist.files['readme.md']?.content
-    @data.stylesheet = gist.files['stylesheet.css']?.content
-    @data.textRenderer = gist.files['renderer.handlebars']?.content
-    @data.name = gist.description
-    @data.gist = gist
+    Blaze.renderWithData(Template.viewer, res, $('#mainGrid')[0])
 
-    Blaze.renderWithData(Template.viewer, @data, $('#mainGrid')[0])
-
-    json = JSON.parse @data.data
+    json = JSON.parse res.data
     dTreeOptions.width = $('#graph').width()
     dTreeOptions.height = $(window).height() * 0.80
-    if @data.textTemplate? and @data.textTemplate != ''
-      dTreeOptions.callbacks = {textRenderer: _.bind(handlebarsRenderer, @)}
+    if res.textTemplate? and res.textTemplate != ''
+      dTreeOptions.callbacks = {textRenderer: _.bind(handlebarsRenderer, res)}
 
     dTree.init json, dTreeOptions
 
@@ -86,6 +77,12 @@ Template.viewer.helpers
       return @writekey
     else
       return Router.current().params.key
+
+  readLink: ->
+    if @gist?
+      return Router.routes['tree.view.gist'].url({gist: @gist.id})
+    else
+      return Router.routes['tree.view.guest'].url({slug: @slug})
 
 Template.viewer.events
   'click #shareButton': (event) ->

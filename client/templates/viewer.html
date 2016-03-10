@@ -1,7 +1,13 @@
 <template name="viewer">
   <div class="row" style="padding-top:3em;">
     <div class="seven wide column">
-    <span class="graph-title">{{name}}</span><span class="owner-title">{{author}}</span>
+      <span class="graph-title">
+        {{#if gist}}
+        <a href="{{gist.html_url}}"><i class="github icon"></i></a>
+        {{/if}}
+        {{name}}
+      </span>
+      <span class="owner-title">{{author}}</span>
     </div>
     <div class="right aligned three wide
      column">
@@ -55,7 +61,7 @@
       <div class="ui form">
         <div class="field">
           <label>Read-only link</label>
-          <input type="text" readonly value="{{urlFor 'tree.view.guest'}}">
+          <input type="text" readonly value="{{readLink}}">
         </div>
         {{#if editKey}}
         <div class="field">
