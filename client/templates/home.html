@@ -2,6 +2,7 @@
   <div class="row" style="padding-top:3em;">
     <div class="eight wide column">
       <div class="ui segment">
+
 {{#markdown}}
 # Treehouse
 Treehouse is a playground / an open registry for demoing, viewing and hosting of dTree graphs. Rather than having to build an entire app/site to try out a dTree graph feel free to use this site.
@@ -49,7 +50,26 @@ The library uses a simple JSON data format to represent the data. Checkout [this
 ```
 
 ### Stylesheet
-The stylesheet belong is simple and only intended to show an easy example of how what is possible.
+A standard css stylesheet is used to style the graph. Specifically it should define how the edges (lines), nodes and text should look. Below is an example. dTree supports custom css classes for both the nodes and the text.
+
+```css
+.linage {
+    fill: none;
+    stroke: black;
+}
+.marriage {
+    fill: none;
+    stroke: black;
+}
+.node {
+    background-color: lightblue;
+    border-style: solid;
+    border-width: 1px;
+}
+.nodeText{
+    font: 10px sans-serif;
+}
+```
 
 ### Custom renderer
 When using dTree on your own site you have the possibility to to fully customize how the library renders the text and the node. For security purposes Treehouse uses a custom text renderer that allows for handlebars template to format the node text.
