@@ -66,4 +66,4 @@ A standard css stylesheet is used to style the graph. Specifically it should def
 ```
 
 ### Custom renderer
-When using dTree on your own site you have the possibility to to fully customize how the library renders the text and the node. For security purposes Treehouse uses a custom text renderer that allows for handlebars template to format the node text.
+When using dTree on your own site you have the possibility to to fully customize how the library renders the text and the node. For security purposes Treehouse uses a custom text renderer that allows for handlebars template to format the node text. For added flexibility the renderer uses [Swag](http://elving.github.io/swag/) helpers.
