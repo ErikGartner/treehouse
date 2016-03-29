@@ -10,10 +10,11 @@ The best way to use Treehouse is to host your graph data in a [gist](https://gis
 You just replace ```gist.github.com``` with ```treehouse.gartner.io``` in the gist url and shazam you are looking at your tree graph! Easy right?
 
 The gist should have the following files:
-- data.json *Required*
-- stylesheet.css *Required*
-- readme.md
-- renderer.handlebars
+- **data.json** *(required)*
+- **stylesheet.css** *(required)*
+- **readme.md**
+- **renderer.handlebars**
+- **.treehouse** - This file should contain just the version of dTree.
 
 See [this](https://treehouse.gartner.io/ErikGartner/58e58be650453b6d49d7) example for more.
 
