@@ -10,6 +10,7 @@
     data =
       gist: gist
       name: gist.description
+      owner: gist.owner.login
       data: gist.files['data.json']?.content
       description: gist.files['readme.md']?.content
       stylesheet: gist.files['stylesheet.css']?.content
