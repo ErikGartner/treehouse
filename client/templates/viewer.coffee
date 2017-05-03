@@ -26,7 +26,6 @@ Template.viewer.onRendered ->
   @autorun (comp) =>
     data = Template.currentData()
     document.title = "#{data.owner}/#{data.name} - Treehouse"
-    analytics.page(document.title)
     json = JSON.parse data.data
     dTreeOptions.width = $('#graph').width()
     dTreeOptions.height = $(window).height() * 0.80
@@ -40,7 +39,6 @@ Template.fullscreenViewer.onRendered ->
   @autorun (comp) =>
     data = Template.currentData()
     document.title = "#{data.owner}/#{data.name} - Treehouse"
-    analytics.page(document.title)
     json = JSON.parse data.data
     dTreeOptions.width = window.innerWidth
     dTreeOptions.height = window.outerHeight

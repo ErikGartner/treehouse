@@ -2,6 +2,7 @@ Router.configure
   layoutTemplate: 'ApplicationLayout'
 
 Router.route '/', ->
+  GAnalytics.pageview()
   @render('home')
 
 Router.route '/g/:gist',
@@ -11,6 +12,7 @@ Router.route '/g/:gist',
     return {gist: @params.gist}
 
   action: ->
+    GAnalytics.pageview()
     @render 'gistViewer'
 
 Router.route '/g/f/:gist',
@@ -20,11 +22,13 @@ Router.route '/g/f/:gist',
     return {gist: @params.gist}
 
   action: ->
+    GAnalytics.pageview()
     @render 'gistFullscreenViewer'
 
 Router.route '/:username/:gist',
   name: 'tree.view.shortUrlGist'
   data: ->
+    GAnalytics.pageview()
     return {gist: @params.gist}
 
   action: ->

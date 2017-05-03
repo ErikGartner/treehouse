@@ -32,9 +32,8 @@ iron:router
 
 # Extra UI packages
 semantic:ui-css
-okgrow:analytics
 chuangbo:marked
 simple:highlight.js
-smoiz:dtree
 djedi:sanitize-html-client
 http
+datariot:ganalytics
