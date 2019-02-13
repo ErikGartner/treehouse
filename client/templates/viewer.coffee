@@ -4,7 +4,7 @@ handlebarsRenderer = (name, extra, textClass) ->
   view = new Blaze.View eval(renderFunction)
   html = Blaze.toHTMLWithData view, context
 
-  clean = sanitizeHtml html
+  clean = sanitizeHtml html, allowedTags: sanitizeHtml.defaults.allowedTags.concat([ 'img' ])
   html = '<p align="center" class="' + textClass + '">' + clean + '</p>'
   return html
 
