@@ -4,7 +4,8 @@ handlebarsRenderer = (name, extra, textClass) ->
   view = new Blaze.View eval(renderFunction)
   html = Blaze.toHTMLWithData view, context
 
-  clean = sanitizeHtml html, allowedTags: sanitizeHtml.defaults.allowedTags.concat([ 'img' ])
+  clean = sanitizeHtml html,
+            allowedTags: sanitizeHtml.defaults.allowedTags.concat([ 'img' ])
   html = '<p align="center" class="' + textClass + '">' + clean + '</p>'
   return html
 
@@ -15,7 +16,7 @@ dTreeOptions =
     right: 0
     bottom: 0
     left: 0
-  nodeWidth: 100
+  nodeWidth: 125
   styles:
     node: 'node',
     linage: 'linage',
@@ -28,25 +29,28 @@ Template.viewer.onRendered ->
     document.title = "#{data.owner}/#{data.name} - Treehouse"
     json = JSON.parse data.data
     dTreeOptions.width = $('#graph').width()
-    dTreeOptions.height = $(window).height() * 0.80
+    dTreeOptions.height = window.screen.height * 0.7
     dTreeOptions.target = '#graph'
     if data.textTemplate? and data.textTemplate != ''
       dTreeOptions.callbacks = {textRenderer: _.bind(handlebarsRenderer, @)}
 
     dTree.init json, dTreeOptions
+    $('svg').attr 'width', '100%' # Ensure proper rescaling
 
 Template.fullscreenViewer.onRendered ->
   @autorun (comp) =>
     data = Template.currentData()
     document.title = "#{data.owner}/#{data.name} - Treehouse"
     json = JSON.parse data.data
-    dTreeOptions.width = window.innerWidth
-    dTreeOptions.height = window.outerHeight
+    dTreeOptions.width = window.screen.width
+    dTreeOptions.height = window.screen.height
     dTreeOptions.target = '#fullscreen-graph'
     if data.textTemplate? and data.textTemplate != ''
       dTreeOptions.callbacks = {textRenderer: _.bind(handlebarsRenderer, @)}
 
     dTree.init json, dTreeOptions
+    $('svg').attr 'width', '100vw' # Ensure proper rescaling
+    $('svg').attr 'height', '100vh' # Ensure proper rescaling
 
 Template.gistViewer.onRendered ->
   Session.set 'gistData', undefined
