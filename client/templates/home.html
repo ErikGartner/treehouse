@@ -1,8 +1,9 @@
 <template name="home">
-  <div id="mainGrid" class="ui centered stackable grid">
-    <div class="row" style="padding-top:3em;">
-      <div class="eight wide column">
-        <div class="ui segment">
+  <div class="ui fluid container">
+    <div id="mainGrid" class="ui centered stackable grid">
+      <div class="row" style="padding-top:3em;">
+        <div class="eight wide column">
+          <div class="ui segment">
 
 {{#markdown}}
 # Treehouse
@@ -76,6 +77,7 @@ A standard css stylesheet is used to style the graph. Specifically it should def
 ### Custom renderer
 When using dTree on your own site you have the possibility to to fully customize how the library renders the text and the node. For security purposes Treehouse uses a custom text renderer that allows for handlebars template to format the node text. For added flexibility the renderer uses [Swag](http://elving.github.io/swag/) helpers.
 {{/markdown}}
+          </div>
         </div>
       </div>
     </div>

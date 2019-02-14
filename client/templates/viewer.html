@@ -1,75 +1,77 @@
 <template name="viewer">
-  <div id="mainGrid" class="ui centered stackable grid">
-    <div class="row" style="padding-top:3em;">
-      <div class="seven wide column">
-        <span class="graph-title">
-          {{#if gist}}
-          <a href="{{gist.html_url}}"><i class="github icon"></i></a>
-          {{/if}}
-          {{name}}
-        </span>
-        <span class="owner-title">{{author}}</span>
-      </div>
-      <div class="right aligned three wide
-       column">
-        <div style="font-size:1.5em">
-          <a href="#" id="shareButton"><i class="share icon"></i></a>
-          {{#if editKey}}
-          <a href="{{pathFor 'tree.editor' key=editKey}}"><i class="edit icon"></i></a>
-          {{/if}}
-          <a href="{{fullscreenLink}}"><i class="expand icon"></i></a>
+  <div class="ui fluid container">
+    <div id="mainGrid" class="ui centered stackable grid">
+      <div class="row" style="padding-top:3em;">
+        <div class="seven wide column">
+          <span class="graph-title">
+            {{#if gist}}
+            <a href="{{gist.html_url}}"><i class="github icon"></i></a>
+            {{/if}}
+            {{name}}
+          </span>
+          <span class="owner-title">{{author}}</span>
+        </div>
+        <div class="right aligned three wide
+         column">
+          <div style="font-size:1.5em">
+            <a href="#" id="shareButton"><i class="share icon"></i></a>
+            {{#if editKey}}
+            <a href="{{pathFor 'tree.editor' key=editKey}}"><i class="edit icon"></i></a>
+            {{/if}}
+            <a href="{{fullscreenLink}}"><i class="expand icon"></i></a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="fourteen wide column">
-        <style id="graph-style">
-        {{stylesheet}}
-        </style>
-        <div id="graph"></div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="ten wide column">
-        <div class="ui raised segment">
-          <a class="ui green ribbon label">Description</a>
-          {{{compiledDescription}}}
+      <div class="row">
+        <div class="fourteen wide column">
+          <style id="graph-style">
+          {{stylesheet}}
+          </style>
+          <div id="graph"></div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="five wide column">
-        <div class="ui raised segment">
-           {{#if textTemplate}}
-           <a class="ui red ribbon label">Custom Template</a>
-           <p><pre>{{{hlTemplate}}}</pre></p>
-           {{/if}}
-           <a class="ui blue ribbon label">Stylesheet</a>
-           <p><pre>{{{hlStyle}}}</pre></p>
+      <div class="row">
+        <div class="ten wide column">
+          <div class="ui raised segment">
+            <a class="ui green ribbon label">Description</a>
+            {{{compiledDescription}}}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="five wide column">
+          <div class="ui raised segment">
+             {{#if textTemplate}}
+             <a class="ui red ribbon label">Custom Template</a>
+             <p><pre>{{{hlTemplate}}}</pre></p>
+             {{/if}}
+             <a class="ui blue ribbon label">Stylesheet</a>
+             <p><pre>{{{hlStyle}}}</pre></p>
+           </div>
          </div>
-       </div>
-       <div class="five wide column">
-         <div class="ui raised segment">
-            <a class="ui orange right ribbon label">Tree Data</a>
-            <p><pre>{{{hlData}}}</pre></p>
+         <div class="five wide column">
+           <div class="ui raised segment">
+              <a class="ui orange right ribbon label">Tree Data</a>
+              <p><pre>{{{hlData}}}</pre></p>
+            </div>
           </div>
-        </div>
-    </div>
+      </div>
 
-    <div id="sharemodal" class="ui small modal">
-      <div class="header">Share {{name}}</div>
-      <div class="content">
-        <div class="ui form">
-          <div class="field">
-            <label>Read-only link</label>
-            <input type="text" readonly value="{{readLink}}">
+      <div id="sharemodal" class="ui small modal">
+        <div class="header">Share {{name}}</div>
+        <div class="content">
+          <div class="ui form">
+            <div class="field">
+              <label>Read-only link</label>
+              <input type="text" readonly value="{{readLink}}">
+            </div>
+            {{#if editKey}}
+            <div class="field">
+              <label>Editing link</label>
+              <input type="text" readonly value="{{urlFor 'tree.view.owner' key=editKey}}">
+            </div>
+            {{/if}}
           </div>
-          {{#if editKey}}
-          <div class="field">
-            <label>Editing link</label>
-            <input type="text" readonly value="{{urlFor 'tree.view.owner' key=editKey}}">
-          </div>
-          {{/if}}
         </div>
       </div>
     </div>
