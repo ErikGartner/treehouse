@@ -67,4 +67,32 @@ A standard css stylesheet is used to style the graph. Specifically it should def
 ```
 
 ### Custom renderer
-When using dTree on your own site you have the possibility to to fully customize how the library renders the text and the node. For security purposes Treehouse uses a custom text renderer that allows for handlebars template to format the node text. For added flexibility the renderer uses [Swag](http://elving.github.io/swag/) helpers.
+When using dTree on your own site you have the possibility to to fully customize how the library renders the text and the node. For security purposes Treehouse uses a custom text renderer that allows for handlebars template to format the node text. For added flexibility the renderer uses [Handlebars Helpers](https://github.com/helpers/handlebars-helpers).
+
+To make the arbitrary HTML safer it is sanitized and allows the following HMTL:
+```javascript
+allowedTags: [ 'h3', 'h4', 'h5', 'h6', 'blockquote', 'p', 'a', 'ul', 'ol',
+  'nl', 'li', 'b', 'i', 'strong', 'em', 'strike', 'code', 'hr', 'br', 'div',
+  'table', 'thead', 'caption', 'tbody', 'tr', 'th', 'td', 'pre', 'iframe',
+  'img', 'span'],
+
+allowedAttributes: {
+  a: ['href', 'name', 'target', 'class'],
+  i: ['class'],
+  div: ['class'],
+  span: ['class'],
+  img: ['src', 'class']
+}
+```
+
+Example template:
+```handlebars
+<div>
+  {{name}} - {{extra.age}}
+</div>
+```
+
+## License
+The MIT License (MIT)
+
+Copyright (c) 2015-2019 Erik Gärtner
