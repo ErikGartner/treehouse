@@ -1,0 +1,27 @@
+{
+  "name": "treehouse",
+  "version": "1.0.0",
+  "description": "Treehouse is a playground / an open registry for demoing, viewing and hosting of dTree graphs. Rather than having to build an entire app/site to try out a dTree graph feel free to use this site.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ErikGartner/treehouse.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ErikGartner/treehouse/issues"
+  },
+  "homepage": "https://github.com/ErikGartner/treehouse",
+  "dependencies": {
+    "@babel/runtime": "^7.3.4",
+    "handlebars": "^4.1.0",
+    "handlebars-helpers": "^0.10.0",
+    "lodash": "^4.17.11",
+    "meteor-node-stubs": "^0.4.1",
+    "sanitize-html": "^1.20.0"
+  }
+}
