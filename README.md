@@ -79,9 +79,10 @@ allowedTags: [ 'h3', 'h4', 'h5', 'h6', 'blockquote', 'p', 'a', 'ul', 'ol',
 allowedAttributes: {
   a: ['href', 'name', 'target', 'class'],
   i: ['class'],
-  div: ['class'],
-  span: ['class'],
-  img: ['src', 'class']
+  div: ['align', 'class', 'style'],
+  span: ['align', 'class', 'style'],
+  img: ['src', 'class'],
+  p: ['align', 'class', 'style']
 }
 ```
 
