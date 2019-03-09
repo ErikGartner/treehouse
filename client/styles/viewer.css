@@ -13,3 +13,16 @@
   font-size: 3em;
   font-weight: bold;
 }
+
+pre#json-data{
+  white-space: pre;
+  overflow-x: scroll;
+}
+
+.hljs {
+    display: inline-block;
+    overflow-x: scroll;
+    padding: 0.5em;
+    padding-right: 100%;
+    -webkit-text-size-adjust: none;
+}

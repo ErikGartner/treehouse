@@ -52,9 +52,24 @@
          <div class="five wide column">
            <div class="ui raised segment">
               <a class="ui orange right ribbon label">Tree Data</a>
-              <p><pre>{{{hlData}}}</pre></p>
+              <p><pre id="json-data">{{{hlData}}}</pre></p>
             </div>
           </div>
+      </div>
+
+      <div class="ten wide column">
+       <div class="ui message">
+         <div class="header">
+           Disclaimer
+         </div>
+         <p align="center">
+          <a href="https://github.com/erikgartner/treehouse">Treehouse</a> is an open source project by <a href="https://gartner.io"><b>Erik Gärtner</b></a>.
+          <br>
+          The data displayed above is not hosted on Treehouse but merely <emph>viewed</emph>. We do not control, administer, promote, or own any content displayed.
+          <br>
+          The data shown above is fetched from <a href="{{gist.html_url}}">Github</a> (specified by the URL you typed), please direct content complaints to Github.
+         </p>
+       </div>
       </div>
 
       <div id="sharemodal" class="ui small modal">
@@ -83,9 +98,7 @@
     {{#with gistData}}
       {{> viewer}}
     {{/with}}
+  {{else}}
+    oops
   {{/if}}
-</template>
-
-<template name="localViewer">
-  {{> viewer}}
 </template>
