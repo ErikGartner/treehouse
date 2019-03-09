@@ -9,11 +9,6 @@
   height: "100vh";
 }
 
-.graph-title {
-  font-size: 3em;
-  font-weight: bold;
-}
-
 pre.data-viewer{
   white-space: pre;
   overflow-x: scroll;
@@ -27,6 +22,7 @@ pre.data-viewer{
     -webkit-text-size-adjust: none;
 }
 
-div.loading-page {
+.loading-page {
   margin-top: 5em;
+  padding-top: 5em;
 }

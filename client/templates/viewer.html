@@ -1,25 +1,16 @@
 <template name="viewer">
   <div class="ui fluid container">
     <div id="mainGrid" class="ui centered stackable grid">
-      <div class="row" style="padding-top:3em;">
-        <div class="seven wide column">
-          <span class="graph-title">
-            {{#if gist}}
-            <a href="{{gist.html_url}}"><i class="github icon"></i></a>
-            {{/if}}
-            {{name}}
-          </span>
-          <span class="owner-title">{{author}}</span>
-        </div>
-        <div class="right aligned three wide
-         column">
-          <div style="font-size:1.5em">
-            <a href="#" id="shareButton"><i class="share icon"></i></a>
-            {{#if editKey}}
-            <a href="{{pathFor 'tree.editor' key=editKey}}"><i class="edit icon"></i></a>
-            {{/if}}
-            <a href="{{fullscreenLink}}"><i class="expand icon"></i></a>
-          </div>
+      <div class="row" style="padding-top: 3em;">
+        <div class="ten wide column">
+          <h1 class="ui header">
+            <a href="{{gist.html_url}}"><i class="large github icon"></i></a>
+            <a href="{{fullscreenLink}}"><i class="large expand icon"></i></a>
+            <div class="content">
+              {{name}}
+              <div class="sub header">by {{owner}}</div>
+            </div>
+          </h1>
         </div>
       </div>
       <div class="row">

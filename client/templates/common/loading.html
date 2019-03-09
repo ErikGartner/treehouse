@@ -1,21 +1,21 @@
 <template name="loading">
   <div class="ui fluid container">
     <div class="ui centered stackable grid">
-      <div class="loading-page six wide column">
-
-        <div class="ui icon info message">
-          <i class="notched circle loading icon"></i>
-          <div class="content">
-            <div class="header">
-              Just one second
+      <div class="six wide column">
+        <div class="loading-page">
+          <div class="ui icon info message">
+            <i class="notched circle loading icon"></i>
+            <div class="content">
+              <div class="header">
+                Just one second
+              </div>
+              <p>
+                Fetching that content for you from<br>
+                <a href="https://gist.github.com/{{gistSource}}">https://gist.github.com/{{gistSource}}</a>
+              </p>
             </div>
-            <p>
-              Fetching that content for you from<br>
-              <a href="https://gist.github.com/{{gistSource}}">https://gist.github.com/{{gistSource}}</a>
-            </p>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -24,25 +24,25 @@
 <template name="error">
   <div class="ui fluid container">
     <div class="ui centered stackable grid">
-      <div class="loading-page six wide column">
+      <div class="six wide column">
+        <div class="loading-page">
+          <div class="ui icon error message">
+            <i class="minus circle icon"></i>
+            <div class="content">
+              <div class="header">
+                An error occurred!
+              </div>
+              <p>
+                Failed to load dTree data from<br>
+                <a href="https://gist.github.com/{{gistSource}}">https://gist.github.com/{{gistSource}}</a>
+              </p>
 
-        <div class="ui icon error message">
-          <i class="minus circle icon"></i>
-          <div class="content">
-            <div class="header">
-              An error occurred!
+              <p>
+                Check that this is the correct source and that the data is in the <a href="/">right format</a>.
+              </p>
             </div>
-            <p>
-              Failed to load dTree data from<br>
-              <a href="https://gist.github.com/{{gistSource}}">https://gist.github.com/{{gistSource}}</a>
-            </p>
-
-            <p>
-              Check that this is the correct source and that the data is in the <a href="/">right format</a>.
-            </p>
           </div>
         </div>
-
       </div>
     </div>
   </div>
