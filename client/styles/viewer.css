@@ -14,7 +14,7 @@
   font-weight: bold;
 }
 
-pre#json-data{
+pre.data-viewer{
   white-space: pre;
   overflow-x: scroll;
 }
