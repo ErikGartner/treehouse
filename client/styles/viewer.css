@@ -22,7 +22,12 @@ pre.data-viewer{
     -webkit-text-size-adjust: none;
 }
 
-.loading-page {
+div.loading-page {
   margin-top: 5em;
   padding-top: 5em;
+}
+
+.loading-message {
+  word-wrap: break-word;
+  white-space: wrap;
 }
