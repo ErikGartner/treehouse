@@ -10,5 +10,11 @@
     {{#with gistData}}
       {{> fullscreenViewer}}
     {{/with}}
+  {{else}}
+    {{#if gistErr}}
+      {{> error}}
+    {{else}}
+      {{> loading}}
+    {{/if}}
   {{/if}}
 </template>

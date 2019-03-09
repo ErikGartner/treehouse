@@ -99,6 +99,10 @@
       {{> viewer}}
     {{/with}}
   {{else}}
-    oops
+    {{#if gistErr}}
+      {{> error}}
+    {{else}}
+      {{> loading}}
+    {{/if}}
   {{/if}}
 </template>

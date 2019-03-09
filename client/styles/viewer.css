@@ -26,3 +26,7 @@ pre#json-data{
     padding-right: 100%;
     -webkit-text-size-adjust: none;
 }
+
+div.loading-page {
+  margin-top: 5em;
+}

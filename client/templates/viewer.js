@@ -106,7 +106,7 @@ Template.gistViewer.onRendered(function() {
   return getGist(this.data.gist, function(err, res) {
     if (err != null) {
       console.log(err);
-      return;
+      return Session.set('gistErr', err);
     }
     return Session.set('gistData', res);
   });
@@ -117,7 +117,7 @@ Template.gistFullscreenViewer.onRendered(function() {
   return getGist(this.data.gist, function(err, res) {
     if (err != null) {
       console.log(err);
-      return;
+      return Session.set('gistErr', err);
     }
     return Session.set('gistData', res);
   });
@@ -170,12 +170,30 @@ Template.viewer.helpers({
 Template.gistViewer.helpers({
   gistData: function() {
     return Session.get('gistData');
+  },
+  gistErr: function() {
+    return Session.get('gistErr');
   }
 });
 
 Template.gistFullscreenViewer.helpers({
   gistData: function() {
     return Session.get('gistData');
+  },
+  gistErr: function() {
+    return Session.get('gistErr');
+  }
+});
+
+Template.loading.helpers({
+  gistSource: function() {
+    return this.gist;
+  }
+});
+
+Template.error.helpers({
+  gistSource: function() {
+    return this.gist;
   }
 });
 
