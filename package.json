@@ -18,7 +18,7 @@
   "homepage": "https://github.com/ErikGartner/treehouse",
   "dependencies": {
     "@babel/runtime": "^7.3.4",
-    "handlebars": "^4.1.0",
+    "handlebars": "^4.5.3",
     "handlebars-helpers": "^0.10.0",
     "lodash": "^4.17.11",
     "meteor-node-stubs": "^0.4.1",
