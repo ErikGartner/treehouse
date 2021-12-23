@@ -4,20 +4,20 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-base@1.4.0             # Packages every Meteor app needs to have
-mobile-experience@1.0.5       # Packages for a great mobile UX
-mongo@1.6.0                   # The database Meteor supports right now
+meteor-base@1.5.1             # Packages every Meteor app needs to have
+mobile-experience@1.1.0       # Packages for a great mobile UX
+mongo@1.13.0                   # The database Meteor supports right now
 blaze-html-templates@1.0.4    # Compile .html files into Meteor Blaze views
 session@1.2.0                 # Client-side reactive dictionary for your app
 jquery@1.11.10                  # Helpful client-side library
 tracker@1.2.0                 # Meteor's client-side reactive programming library
-ejson@1.1.0
+ejson@1.1.1
 
 check@1.3.1
 audit-argument-checks@1.0.7
 
 es5-shim@4.8.0
-ecmascript@0.12.4
+ecmascript@0.16.0
 
 # Extra meteor packages
 coffeescript
@@ -28,7 +28,7 @@ iron:router
 # Extra UI packages
 chuangbo:marked
 simple:highlight.js
-http@1.4.1
+http@1.4.2
 datariot:ganalytics
-standard-minifier-css@1.5.2
-standard-minifier-js@2.4.0
+standard-minifier-css@1.7.4
+standard-minifier-js@2.7.2
