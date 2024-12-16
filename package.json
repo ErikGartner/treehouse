@@ -20,7 +20,7 @@
     "@babel/runtime": "^7.16.5",
     "handlebars": "^4.1.0",
     "handlebars-helpers": "^0.10.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "meteor-node-stubs": "^0.4.1",
     "sanitize-html": "^1.20.0"
   }
